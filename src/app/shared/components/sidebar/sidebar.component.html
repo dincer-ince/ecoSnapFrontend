@@ -1,0 +1,33 @@
+<mat-nav-list>
+    <div class="profile-card">
+        <div class="header">
+            <h2>{{this.service.user?.name}} {{this.service.user?.surname}}</h2>
+            <h4>example@email.com</h4>
+        </div>
+        <img src="{{this.service.user?.photo?.uri}}" alt="Default Name">
+    </div>
+
+    
+
+    <mat-divider></mat-divider>
+
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Home</a>
+    <mat-divider></mat-divider>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/record">Record</a>
+    <mat-divider></mat-divider>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/ranking">Ranking</a>
+
+    <mat-divider></mat-divider>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+        <mat-icon>import_contacts</mat-icon>
+        Help
+    </a>
+
+    <a mat-list-item (click)="test()">
+        <mat-icon>contact_phone</mat-icon>
+        Legal
+    </a>
+
+</mat-nav-list>
