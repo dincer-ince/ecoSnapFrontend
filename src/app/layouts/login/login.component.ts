@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
       this.loading = false;
       var login= res as LoginModel;
       this.service.user=login.user as UserModel;
+      this.service._UserObservable.next(this.service.user);
       console.log(this.service.user);
       localStorage.setItem('user',this.service.user.name+''+this.service.user.surname)
       this.router.navigate(['/'])

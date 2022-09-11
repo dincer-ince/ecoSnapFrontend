@@ -13,7 +13,7 @@
     
     
     <ng-container *ngFor="let photo of this.photos">
-        <ng-template  swiperSlide><img  mat-card-image src="{{photo}}"></ng-template>
+        <ng-template  swiperSlide><img style="max-height: 70vh;object-fit: contain" mat-card-image src="{{photo}}"></ng-template>
     </ng-container>
     
       
@@ -26,7 +26,7 @@
     <mat-card-actions>
       <button mat-button><mat-icon>thumb_up</mat-icon> Begen</button>
       <button mat-button><mat-icon>thumb_down</mat-icon> Begenme</button>
-      <button mat-button><mat-icon>sms</mat-icon> Yorumlar</button>
+      <button mat-button (click)="openDialog()" ><mat-icon>sms</mat-icon> Yorumlar</button>
     </mat-card-actions>
   </mat-card>
 

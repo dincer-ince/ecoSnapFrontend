@@ -2,7 +2,7 @@
     <div class="profile-card">
         <div class="header">
             <h2>{{this.service.user?.name}} {{this.service.user?.surname}}</h2>
-            <h4>example@email.com</h4>
+            <h4>{{this.service.user?.country?.name?.toLowerCase()}} {{this.service.user?.city?.name?.toLowerCase()}}</h4>
         </div>
         <img src="{{this.service.user?.photo?.uri}}" alt="Default Name">
     </div>

@@ -1,0 +1,12 @@
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+.post-card{
+    width:70rem;
+    overflow-x: hidden;
+}
+.mat-dialog-content {
+    max-height: initial;
+    overflow-x: hidden !important;
+  }

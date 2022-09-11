@@ -2,7 +2,7 @@
 
 <div  fxLayout="column" fxLayoutAlign="start center" >
     
-    <ng-container *ngFor="let post of this.posts" >
+    <ng-container *ngFor="let post of this.postservice.ObservablePosts | async" >
         <app-post [post]="post"></app-post>
     </ng-container>
 

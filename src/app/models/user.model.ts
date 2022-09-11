@@ -8,7 +8,7 @@ export interface UserModel
     email: string;
     country: idName;
     city: idName;
-    role: idName;
+    role: any;
     photo: photo
 
 }

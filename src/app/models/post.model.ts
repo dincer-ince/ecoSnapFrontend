@@ -58,3 +58,14 @@ export interface photosModel{
     commentId:any;
     userId:any;
 }
+
+export interface commentModel{
+    id:string;
+    user:UserModel;
+    message:string;
+    date:string;
+    activityId:string;
+    isValid:any;
+    photo:any;
+
+}

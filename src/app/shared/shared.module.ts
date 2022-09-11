@@ -18,12 +18,15 @@ import { PostComponent } from './post/post.component';
 import {MatCardModule} from '@angular/material/card';
 import { SwiperModule } from 'swiper/angular';
 import {MatBadgeModule} from '@angular/material/badge';
+import { PostDialogComponent } from './post-dialog/post-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    PostComponent
+    PostComponent,
+    PostDialogComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     RouterModule,
     MatCardModule,
     SwiperModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule
   ],
   exports: [
     HeaderComponent,

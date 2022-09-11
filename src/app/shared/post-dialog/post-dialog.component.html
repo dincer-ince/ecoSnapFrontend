@@ -1,0 +1,56 @@
+
+<mat-dialog-content style="height:100%;" class="mat-typography">
+    <mat-card class="post-card">
+        <mat-card-header>
+          <img src="{{this.post.user.photo.uri}}" mat-card-avatar >
+          <mat-card-title>{{this.post.user.name}}</mat-card-title>
+          <mat-card-subtitle>{{this.post.address.suburb}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <swiper
+            [slidesPerView]="1"
+            [spaceBetween]="50"
+            [navigation]="true"
+            [pagination]="{ clickable: true }"
+        >
+        
+        
+        <ng-container *ngFor="let photo of this.photos">
+            <ng-template  swiperSlide><img style="height: 70vh;object-fit: contain" mat-card-image src="{{photo}}"></ng-template>
+        </ng-container>
+        
+        
+        </swiper>
+
+        <mat-card-content>
+          <h1 >{{this.post.name}}</h1>
+          <p>{{this.post.description}}</p>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+          <button mat-button><mat-icon>thumb_up</mat-icon> Begen</button>
+          <button mat-button><mat-icon>thumb_down</mat-icon> Begenme</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <!-- comments -->
+      <div style="min-height:20px">
+
+      </div>
+
+      <ng-container *ngFor="let comment of this.comments | async">
+          <mat-card class="post-card">
+            <mat-card-header>
+                <img src="{{comment.user.photo.uri}}" mat-card-avatar >
+                <mat-card-title>{{comment.user.name}}</mat-card-title>
+                <mat-card-subtitle>{{this.comment.date}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+          
+              <p>{{comment.message}}</p>
+            </mat-card-content>
+          </mat-card>
+          <div style="min-height:10px"></div>
+      </ng-container>
+      
+</mat-dialog-content>

@@ -10,7 +10,7 @@ import { MatDividerModule} from '@angular/material/divider';
 import { RankingComponent } from 'src/app/modules/ranking/ranking.component';
 import { PostsComponent } from 'src/app/modules/posts/posts.component';
 import{FlexLayoutModule} from '@angular/flex-layout'
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -28,7 +28,8 @@ import{FlexLayoutModule} from '@angular/flex-layout'
     SharedModule,
     MatSidenavModule,
     MatDividerModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule
   ]
 })
 export class DefaultModule { }
