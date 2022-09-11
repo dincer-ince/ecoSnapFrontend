@@ -37,7 +37,8 @@ export class LoginComponent implements OnInit {
   constructor(public service:UserService, private router:Router) { }
 
   ngOnInit(): void {
-    console.log("called");
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     this.service.user=undefined;
   }
   
@@ -55,6 +56,7 @@ export class LoginComponent implements OnInit {
       var login= res as LoginModel;
       this.service.user=login.user as UserModel;
       console.log(this.service.user);
+      localStorage.setItem('user',this.service.user.name+''+this.service.user.surname)
       this.router.navigate(['/'])
 
     },

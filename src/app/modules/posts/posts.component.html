@@ -1,0 +1,11 @@
+
+
+<div  fxLayout="column" fxLayoutAlign="start center" >
+    
+    <ng-container *ngFor="let post of this.posts" >
+        <app-post [post]="post"></app-post>
+    </ng-container>
+
+</div>
+
+<div style="min-height:20px"></div>

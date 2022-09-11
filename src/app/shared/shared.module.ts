@@ -14,13 +14,16 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import { RouterModule } from '@angular/router';
-
-
+import { PostComponent } from './post/post.component';
+import {MatCardModule} from '@angular/material/card';
+import { SwiperModule } from 'swiper/angular';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    PostComponent
   ],
   imports: [
     CommonModule,
@@ -31,12 +34,16 @@ import { RouterModule } from '@angular/router';
     MatMenuModule,
     MatListModule,
     FlexLayoutModule,
-    RouterModule
+    RouterModule,
+    MatCardModule,
+    SwiperModule,
+    MatBadgeModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    PostComponent
   ]
 })
 export class SharedModule { }

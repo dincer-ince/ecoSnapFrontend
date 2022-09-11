@@ -8,6 +8,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import{MatSidenavModule} from '@angular/material/sidenav';
 import { MatDividerModule} from '@angular/material/divider';
 import { RankingComponent } from 'src/app/modules/ranking/ranking.component';
+import { PostsComponent } from 'src/app/modules/posts/posts.component';
+import{FlexLayoutModule} from '@angular/flex-layout'
 
 
 
@@ -17,14 +19,16 @@ import { RankingComponent } from 'src/app/modules/ranking/ranking.component';
     DefaultComponent,
     HomeComponent,
     RecordComponent,
-    RankingComponent
+    RankingComponent,
+    PostsComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    FlexLayoutModule
   ]
 })
 export class DefaultModule { }

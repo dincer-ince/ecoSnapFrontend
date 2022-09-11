@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
-import { LoginComponent } from './layouts/login/login.component';
 import { LoginModule } from './layouts/login/login.module';
+import { Router } from '@angular/router';
+import {GeoService}from './services/geo.service'
+
 
 
 
@@ -17,8 +19,6 @@ import { LoginModule } from './layouts/login/login.module';
     AppComponent,
 
 
-
-
   ],
   imports: [
     BrowserModule,
@@ -27,7 +27,13 @@ import { LoginModule } from './layouts/login/login.module';
     DefaultModule,
     LoginModule
   ],
-  providers: [],
+  providers: [
+    GeoService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private router:Router){
+    router.navigate(['']);
+  }
+}
