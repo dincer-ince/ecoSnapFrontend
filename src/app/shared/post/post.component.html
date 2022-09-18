@@ -1,5 +1,5 @@
 <mat-card class="post-card">
-    <mat-card-header>
+    <mat-card-header (click)="openDialog()">
       <img src="{{this.post.user.photo.uri}}" mat-card-avatar >
       <mat-card-title>{{this.post.user.name}}</mat-card-title>
       <mat-card-subtitle>{{this.post.address.suburb}}</mat-card-subtitle>
@@ -18,15 +18,22 @@
     
       
     </swiper>
-    <mat-card-content>
+    <mat-card-content (click)="openDialog()">
       <h1 >{{this.post.name}}</h1>
       <p>{{this.post.description}}</p>
     </mat-card-content>
+
+    
+
     <mat-divider></mat-divider>
     <mat-card-actions>
-      <button mat-button><mat-icon>thumb_up</mat-icon> Begen</button>
-      <button mat-button><mat-icon>thumb_down</mat-icon> Begenme</button>
-      <button mat-button (click)="openDialog()" ><mat-icon>sms</mat-icon> Yorumlar</button>
+      <button mat-button (click)="kudoSubmit(true)" *ngIf="!this.liked"><mat-icon>thumb_up</mat-icon> {{this.likes}} Destekleyen</button>
+      <button mat-raised-button (click)="kudoDelete(true)" color="accent" *ngIf="this.liked"><mat-icon>thumb_up</mat-icon> {{this.likes}} Destekleyen</button>
+
+      <button mat-button (click)="kudoSubmit(false)" *ngIf="!this.disliked"><mat-icon>thumb_down</mat-icon> {{this.dislikes}} Elestiren</button>
+      <button mat-raised-button (click)="kudoDelete(false)" color="accent"  *ngIf="this.disliked"><mat-icon>thumb_down</mat-icon> {{this.dislikes}} Elestiren</button>
+
+      <button mat-button (click)="openDialog()" ><mat-icon>sms</mat-icon>{{this.comments}} Yorumlar</button>
     </mat-card-actions>
   </mat-card>
 

@@ -20,6 +20,10 @@ import { SwiperModule } from 'swiper/angular';
 import {MatBadgeModule} from '@angular/material/badge';
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatInputModule} from '@angular/material/input';
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -41,7 +45,11 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatCardModule,
     SwiperModule,
     MatBadgeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,

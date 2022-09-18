@@ -31,7 +31,7 @@ export class GeoService {
     { name: 'Stamen', source: new StamenSource({ layer: 'terrain' }) }
   ];
 
-  selectedTileSource = this.tileSources[2];
+  selectedTileSource = this.tileSources[1];
   vectorSource: VectorSource=new VectorSource;
 
   public features: Feature[]=[]

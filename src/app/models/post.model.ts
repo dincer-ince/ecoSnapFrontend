@@ -69,3 +69,13 @@ export interface commentModel{
     photo:any;
 
 }
+export interface impressionsModel{
+    commentCount:number;
+    criticisers:string[];
+    supporters:string[];
+}
+export interface kudoModel{
+    id:string;
+    user:UserModel;
+    date:string;
+}
