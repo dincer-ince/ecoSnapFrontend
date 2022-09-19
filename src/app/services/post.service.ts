@@ -11,7 +11,10 @@ export class PostService {
   constructor(private service: UserService, private http: HttpClient) {
     this.service.UserObservable.pipe(distinctUntilChanged()).subscribe(
       (res) => {
-        this.loadPosts();
+        if(this.posts.length==0){
+          this.loadPosts();
+        }
+        
       }
     );
   }
@@ -27,6 +30,10 @@ export class PostService {
     return this.http.get('https://ecosnap-api.herokuapp.com/v1/api/activity', {
       params: body,
     });
+  }
+  submitPost(body:any){
+    const headers = { "Accept": "application/json" };
+    return this.http.post('https://ecosnap-api.herokuapp.com/v1/api/activity/add',body,{headers: headers});
   }
 
   getComments(body: any) {
@@ -68,7 +75,7 @@ export class PostService {
     var body = {
       IdForUser: this.service.user?.id || '',
       IdForFriends: '',
-      PageIndex: this.pageIndex,
+      PageIndex: this.pageIndex++,
       PageSize: this.pageSize,
     };
 

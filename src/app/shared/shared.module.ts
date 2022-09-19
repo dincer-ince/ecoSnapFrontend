@@ -22,15 +22,18 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatInputModule} from '@angular/material/input';
-
+import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NewPostDialogComponent } from './new-post-dialog/new-post-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
     PostComponent,
-    PostDialogComponent
+    PostDialogComponent,
+    NewPostDialogComponent
   ],
   imports: [
     CommonModule,
@@ -48,8 +51,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatInputModule,
+    MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   exports: [
     HeaderComponent,

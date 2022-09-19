@@ -6,6 +6,9 @@ import { PostService } from 'src/app/services/post.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PostDialogComponent } from 'src/app/shared/post-dialog/post-dialog.component';
 import { Observable } from 'ol';
+import { NewPostDialogComponent } from 'src/app/shared/new-post-dialog/new-post-dialog.component';
+import {fromLonLat, toLonLat} from 'ol/proj';
+import {toStringHDMS} from 'ol/coordinate';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,10 +18,12 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   listener: any;
 
   constructor(
-    private geoService: GeoService,
+    public geoService: GeoService,
     private postservice: PostService,
     private dialog: MatDialog
   ) {}
+
+  newPostMode: boolean = false;
 
   ngAfterViewInit(): void {
     //this.postservice.loadPosts();
@@ -28,41 +33,33 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     this.geoService.updateSize();
     console.log('called');
 
-    const container = document.getElementById('popup');
-    const content = document.getElementById('popup-content');
-    const closer = document.getElementById('popup-closer');
-
-    const overlay = new Overlay({
-      element: container!,
-      autoPan: true,
-    });
-
     this.listener = this.geoService.map.on('singleclick', (evt: any) => {
       const coordinate = evt.coordinate;
+      if (!this.newPostMode) {
+        if (this.geoService.map.hasFeatureAtPixel(evt.pixel)) {
+          var clickedFeatureClust = this.geoService.map
+            .getFeaturesAtPixel(evt.pixel)
+            .pop();
+          if (clickedFeatureClust == null) {
+            return;
+          }
+          var clickedFeature = clickedFeatureClust.get('features');
 
-      if (this.geoService.map.hasFeatureAtPixel(evt.pixel)) {
-        var clickedFeatureClust = this.geoService.map
-          .getFeaturesAtPixel(evt.pixel)
-          .pop();
-        if (clickedFeatureClust == null) {
-          return;
-        }
-        var clickedFeature = clickedFeatureClust.get('features');
-
-        if (clickedFeature.length == 1) {
-          var clickedActivity: PostModel = clickedFeature[0].get('element');
-          this.openDialog(clickedActivity);
-        } else if (clickedFeature.length > 1) {
-          console.log('multiple features');
+          if (clickedFeature.length == 1) {
+            var clickedActivity: PostModel = clickedFeature[0].get('element');
+            this.openDialog(clickedActivity);
+          } else if (clickedFeature.length > 1) {
+            console.log('multiple features');
+          }
         }
       }
-    });
+      else
+      {
 
-    closer!.onclick = function () {
-      overlay.setPosition(undefined);
-      closer!.blur();
-      return false;
-    };
+        this.newPost(toLonLat(coordinate));
+
+      }
+    });
   }
   test() {
     console.log(this.geoService.map.getAllLayers());
@@ -81,6 +78,21 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     });
     dialogRef.componentInstance.post = post;
   }
+
+  newPost(coordinate:any){
+    if (this.dialog.openDialogs.length != 0) {
+      return;
+    }
+
+    const dialogRef = this.dialog.open(NewPostDialogComponent, {
+      height: 'auto',
+      width: '50vw',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
+    });
+    dialogRef.componentInstance.coordinate = coordinate ;
+  }
+  
 
   ngOnDestroy(): void {
     this.geoService.map.un('singleclick', this.listener);

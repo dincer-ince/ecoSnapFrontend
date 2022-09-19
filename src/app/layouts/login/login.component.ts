@@ -1,6 +1,8 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import {LoginModel, UserModel} from '../../models/user.model'
 @Component({
@@ -34,12 +36,13 @@ export class LoginComponent implements OnInit {
     return this.signin.controls['password'].hasError('minlength') ? 'Not a valid password' : '';
   }
 
-  constructor(public service:UserService, private router:Router) { }
+  constructor(public service:UserService, private router:Router, private postservice: PostService) { }
 
   ngOnInit(): void {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     this.service.user=undefined;
+    this.postservice.posts=[];
   }
   
   loading:boolean = false;

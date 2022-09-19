@@ -1,6 +1,5 @@
 
 <div id="map" class="map"></div>
-<div id="popup" class="ol-popup">
-  <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-  <div id="popup-content"></div>
-</div>
+
+<button  mat-raised-button class="new-post" *ngIf="this.newPostMode==true" (click)="this.newPostMode=false;" color="basic"><mat-icon>clear</mat-icon> Vazgec</button>
+<button  mat-raised-button class="new-post" *ngIf="this.newPostMode==false" (click)="this.newPostMode=true;" color="accent"><mat-icon>add</mat-icon> Yeni Aktivite</button>

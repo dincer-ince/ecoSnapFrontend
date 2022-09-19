@@ -61,7 +61,7 @@ export class GeoService {
                 image: new Icon(({
                   
                   crossOrigin: 'anonymous',
-                  src: '/assets/2891491.png',
+                  src: 'assets/2891491.png',
                   imgSize: [20, 20]
                 }))
               })
@@ -158,6 +158,7 @@ export class GeoService {
 
     this.clusterSource.setSource(source)
     this.vectorLayer.setSource(this.clusterSource);
+    this.map.removeLayer(this.vectorLayer)
     this.map.addLayer(this.vectorLayer);
     this.map.getView().fit(this.vectorLayer.getSource().getSource().getExtent(),{duration:400,maxZoom:8,padding: [ 100, 100, 100, 100 ]});
   }
@@ -176,6 +177,7 @@ export class GeoService {
         geometry:new Point(fromLonLat([post.address.longitude,post.address.latitude]))
       }));
     }
+    this.vectorSource=new VectorSource();
     this.vectorSource.addFeatures(this.features)
     this.setVectorSource(this.vectorSource);
   }

@@ -11,7 +11,8 @@ import { RankingComponent } from 'src/app/modules/ranking/ranking.component';
 import { PostsComponent } from 'src/app/modules/posts/posts.component';
 import{FlexLayoutModule} from '@angular/flex-layout'
 import {MatDialogModule} from '@angular/material/dialog';
-
+import{MatIconModule} from '@angular/material/icon';
+import{MatButtonModule}from '@angular/material/button';
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSidenavModule,
     MatDividerModule,
     FlexLayoutModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class DefaultModule { }
