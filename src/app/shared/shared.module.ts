@@ -26,6 +26,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NewPostDialogComponent } from './new-post-dialog/new-post-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { LegalDialogComponent } from './components/legal-dialog/legal-dialog.component';
+import { LayerChangeDialogComponent } from './components/layer-change-dialog/layer-change-dialog.component';
+import { AboutDialogComponent } from './components/about-dialog/about-dialog.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -33,7 +36,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FooterComponent,
     PostComponent,
     PostDialogComponent,
-    NewPostDialogComponent
+    NewPostDialogComponent,
+    LegalDialogComponent,
+    LayerChangeDialogComponent,
+    AboutDialogComponent
   ],
   imports: [
     CommonModule,

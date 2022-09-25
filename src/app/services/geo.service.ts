@@ -26,12 +26,11 @@ export interface Vector {
 export class GeoService {
   bound:boolean=false;
   tileSources = [
-    { name: 'None', source: null },
     { name: 'OSM', source: new OsmSource() },
     { name: 'Stamen', source: new StamenSource({ layer: 'terrain' }) }
   ];
 
-  selectedTileSource = this.tileSources[1];
+  selectedTileSource = this.tileSources[0];
   vectorSource: VectorSource=new VectorSource;
 
   public features: Feature[]=[]
@@ -168,7 +167,6 @@ export class GeoService {
   AddFeatures(){
     this.features=[];
     if (this.service.posts.length==0){
-      console.log("no posts")
       return;
     }
     for(const post of this.service.posts){

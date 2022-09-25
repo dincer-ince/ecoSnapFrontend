@@ -24,11 +24,11 @@
 
         <mat-card-content>
             <mat-form-field style="margin-top: 20px; width:100%;" appearance="fill" color="accent">
-                <mat-label>Baslik</mat-label>
+                <mat-label>Başlık</mat-label>
                 <input  matInput [formControl]="title" >
               </mat-form-field>
               <mat-form-field style=" width:100%;" appearance="fill" color="accent">
-                <mat-label>Ayrintilar</mat-label>
+                <mat-label>Ayrıntılar</mat-label>
                 <textarea  matInput [formControl]="description" ></textarea>
             </mat-form-field>
         </mat-card-content>
@@ -36,17 +36,17 @@
         <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
             
             <input hidden id="input-file-id" multiple type="file" (change)="this.selectFile($event)" />
-            <label for="input-file-id" class="mat-stroked-button" ><mat-icon style="vertical-align:middle">photo</mat-icon> Fotograf Ekle</label>
+            <label for="input-file-id" class="mat-stroked-button" ><mat-icon style="vertical-align:middle">photo</mat-icon> Fotoğraf Ekle</label>
             <mat-form-field appearance="standard" color="accent">
                 <mat-label>Aktivite tipi</mat-label>
                 <mat-select [formControl]="aktivitetipi">
-                <mat-option value="1">Cop Problemi</mat-option>
-                <mat-option value="2">Internet Problemi</mat-option>
+                <mat-option value="1">Çöp Problemi</mat-option>
+                <mat-option value="2">İnternet Problemi</mat-option>
                 <mat-option value="3">Telefon Problemi</mat-option>
                 <mat-option value="4">Elektrik Problemi</mat-option>
                 </mat-select>
             </mat-form-field>
-            <button  mat-raised-button color="accent" (click)="submit()">Yukle</button>
+            <button  mat-raised-button color="accent" (click)="submit()">Yükle</button>
          
               
         </mat-card-actions>

@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
       var login= res as LoginModel;
       this.service.user=login.user as UserModel;
       this.service._UserObservable.next(this.service.user);
-      console.log(this.service.user);
       localStorage.setItem('user',this.service.user.name+''+this.service.user.surname)
       this.router.navigate(['/'])
 
@@ -70,5 +69,16 @@ export class LoginComponent implements OnInit {
     })
     
   }
+
+  guestsignIn(){
+//     misafirhacettepe@gmail.com
+// misafir2022
+    this.signin.patchValue({
+      email: "misafirhacettepe@gmail.com",
+      password:"misafir2022"
+    })
+    this.onSubmit();
+
+}
 
 }

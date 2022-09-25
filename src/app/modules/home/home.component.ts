@@ -9,6 +9,7 @@ import { Observable } from 'ol';
 import { NewPostDialogComponent } from 'src/app/shared/new-post-dialog/new-post-dialog.component';
 import {fromLonLat, toLonLat} from 'ol/proj';
 import {toStringHDMS} from 'ol/coordinate';
+import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,7 +21,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   constructor(
     public geoService: GeoService,
     private postservice: PostService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   newPostMode: boolean = false;
@@ -31,7 +33,6 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     //this.geoService.updateView(5, [32.785501,39.964339])
     this.geoService.setTileSource();
     this.geoService.updateSize();
-    console.log('called');
 
     this.listener = this.geoService.map.on('singleclick', (evt: any) => {
       const coordinate = evt.coordinate;
@@ -62,7 +63,6 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     });
   }
   test() {
-    console.log(this.geoService.map.getAllLayers());
   }
 
   openDialog(post: PostModel) {
@@ -91,10 +91,26 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       maxWidth: '100vw',
     });
     dialogRef.componentInstance.coordinate = coordinate ;
+
+    dialogRef.componentInstance.onSubmit.subscribe(res=>{
+      this.newPostMode=false;
+      this.closeSnackBar();
+      dialogRef.componentInstance.onSubmit.unsubscribe();
+    })
   }
-  
+
+  openSnackBar(){
+    this.snackBar.open("Haritada yeni aktivite yaratmak istediğiniz yere tıklayınız.","",{
+      panelClass: ['mat-toolbar', 'mat-accent'],
+    })
+  }
+  closeSnackBar(){
+    this.snackBar.dismiss();
+  }
+
 
   ngOnDestroy(): void {
     this.geoService.map.un('singleclick', this.listener);
+    this.closeSnackBar();
   }
 }

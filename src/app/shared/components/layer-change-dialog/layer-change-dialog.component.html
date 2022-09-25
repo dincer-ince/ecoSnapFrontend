@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Katman Seç</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-form-field appearance="fill" color="accent">
+        <mat-label>Katmanlar</mat-label>
+        <mat-select [formControl]="this.value" >
+          <ng-container *ngFor="let option of this.service.tileSources index as i">
+              <mat-option value="{{i}}">{{option.name}}</mat-option>
+          </ng-container>
+          
+        </mat-select>
+      </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close cdkFocusInitial >İptal</button>
+  <button mat-button color="accent" [mat-dialog-close]="true" (click)="onSubmit()">Gönder</button>
+</mat-dialog-actions>

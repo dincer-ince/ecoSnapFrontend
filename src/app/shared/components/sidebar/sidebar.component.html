@@ -12,19 +12,19 @@
     <mat-divider></mat-divider>
 
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Home</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Ana Sayfa</a>
     <mat-divider></mat-divider>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/record">Record</a>
+    <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/record">Record</a>
     <mat-divider></mat-divider>
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/ranking">Ranking</a>
-    <mat-divider></mat-divider>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/posts">Posts</a>
+    <mat-divider></mat-divider> -->
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/posts">Gönderiler</a>
 
     <mat-divider></mat-divider>
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+    <a mat-list-item (click)="about()">
         <mat-icon>import_contacts</mat-icon>
-        Help
+        Hakkında
     </a>
 
     <a mat-list-item (click)="test()">

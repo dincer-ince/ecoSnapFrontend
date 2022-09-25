@@ -21,7 +21,7 @@ export class PostService {
 
   posts: PostModel[] = new Array();
   pageIndex: number = 1;
-  pageSize: number = 10;
+  pageSize: number = 50;
   private _observablePosts: BehaviorSubject<PostModel[]> = new BehaviorSubject(
     this.posts
   );
@@ -83,7 +83,6 @@ export class PostService {
       if (res['data'].length > 0) {
         this.posts.push(...res['data']);
         this._observablePosts.next(this.posts);
-        console.log(this.posts);
       }
     });
   }

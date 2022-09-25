@@ -16,7 +16,6 @@ export class PostsComponent implements OnInit {
     //this.postservice.loadPosts();
   }
   test(){
-    console.log(this.postservice.ObservablePosts)
   }
 
   

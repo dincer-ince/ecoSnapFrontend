@@ -42,7 +42,6 @@ export class PostComponent implements OnInit {
         this.likes = impressions.supporters.length;
         this.dislikes = impressions.criticisers.length;
         this.comments = impressions.commentCount;
-        console.log(impressions);
         this.liked = false;
         this.disliked = false;
         impressions.supporters.forEach((x) => {
@@ -65,7 +64,6 @@ export class PostComponent implements OnInit {
       isHelpful: help,
     };
     this.service.submitKudo(body).subscribe((res: any) => {
-      console.log(res);
       this.loadImpressions();
     });
   }
@@ -77,17 +75,14 @@ export class PostComponent implements OnInit {
     };
     this.service.getKudo(body).subscribe((res) => {
       var kudos = res as kudoModel[];
-      console.log(kudos);
       var exists = '';
       kudos.forEach((x) => {
         if (x.user.id === this.userService.user?.id) {
           exists = x.id;
         }
       });
-      console.log(exists);
       if (exists != '') {
         var payload = { id: exists };
-        console.log(payload);
         this.service.deleteKudo(payload).subscribe((res: any) => {
           this.loadImpressions();
         });
