@@ -35,6 +35,9 @@
           <button mat-raised-button (click)="kudoDelete(false)" color="accent"  *ngIf="this.disliked"><mat-icon>thumb_down</mat-icon> {{this.dislikes}} Eleştiren</button>
     
           <button mat-button ><mat-icon>sms</mat-icon>{{this.commentCount}} Yorumlar</button>
+
+          <div fxFlex></div>
+        <button *ngIf="this.userService.user?.id==this.post.user.id" mat-raised-button color="warn" (click)="deletePost()" ><mat-icon>delete</mat-icon> Gönderiyi Sil</button>
         </mat-card-actions>
       </mat-card>
 
@@ -57,7 +60,7 @@
         </mat-card-content>
 
         <mat-card-actions align="end">
-          <button mat-raised-button (click)="submitComment()" color="accent">Gönder</button>
+          <button mat-raised-button [disabled]="!this.comment.valid ||this.comment.pristine" (click)="submitComment()" color="accent">Gönder</button>
         </mat-card-actions>
       </mat-card>
 

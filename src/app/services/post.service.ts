@@ -85,6 +85,11 @@ export class PostService {
         this._observablePosts.next(this.posts);
       }
     });
+
+    
+  }
+  deletePost(id:string){
+    return this.http.delete('https://ecosnap-api.herokuapp.com/v1/api/activity/delete',{body:{id:id}});
   }
 
 

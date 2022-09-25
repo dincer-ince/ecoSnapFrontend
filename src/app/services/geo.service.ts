@@ -53,15 +53,45 @@ export class GeoService {
       style: function(feature) {
         const size = feature.get('features').length;
         let style = styleCache[size];
-        if (!style) {
+        // if (!style) {
           if(size==1){
             if(feature.get('features')[0].get('element').activityType.id==1){
               style=new Style({
                 image: new Icon(({
                   
                   crossOrigin: 'anonymous',
-                  src: 'assets/2891491.png',
-                  imgSize: [20, 20]
+                  src: 'assets/trash.png',
+                  imgSize: [24, 24]
+                }))
+              })
+            }
+            else if(feature.get('features')[0].get('element').activityType.id==2){
+              style=new Style({
+                image: new Icon(({
+                  
+                  crossOrigin: 'anonymous',
+                  src: 'assets/errornet.png',
+                  imgSize: [24, 24]
+                }))
+              })
+            }
+            else if(feature.get('features')[0].get('element').activityType.id==3){
+              style=new Style({
+                image: new Icon(({
+                  
+                  crossOrigin: 'anonymous',
+                  src: 'assets/phone.png',
+                  imgSize: [24, 24]
+                }))
+              })
+            }
+            else if(feature.get('features')[0].get('element').activityType.id==4){
+              style=new Style({
+                image: new Icon(({
+                  
+                  crossOrigin: 'anonymous',
+                  src: 'assets/electricity.png',
+                  imgSize: [24, 24]
                 }))
               })
             }
@@ -85,7 +115,7 @@ export class GeoService {
               })
             });}
           styleCache[size] = style;
-        }
+        // }
         return style;
       }
     });

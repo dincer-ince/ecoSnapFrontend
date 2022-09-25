@@ -10,6 +10,7 @@ import {
 import { PostService } from 'src/app/services/post.service';
 import SwiperCore, { Pagination, Navigation, Scrollbar } from 'swiper';
 import { FormControl,Validators} from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar]);
 @Component({
@@ -22,7 +23,7 @@ export class PostDialogComponent implements OnInit {
   public comments: BehaviorSubject<commentModel[]> = new BehaviorSubject(
     new Array()
   );
-  constructor(public service: PostService, public userService: UserService) {}
+  constructor(public service: PostService, public userService: UserService,private dialog:MatDialog) {}
 
   liked = false;
   disliked = false;
@@ -105,12 +106,12 @@ export class PostDialogComponent implements OnInit {
       this.comments.next(list);
     });
   }
-  comment= new FormControl();
+  comment= new FormControl("",[Validators.minLength(4)]);
   submitComment(){
     if(this.comment.value!=''){
 
       const comment = new FormData();
-      comment.append('Message', this.comment.value),
+      comment.append('Message', this.comment.value || ""),
       comment.append('UserId', this.userService.user!.id);
       comment.append('ActivityId', this.post.id);
       this.service.submitComment(comment).subscribe((res: any) => {
@@ -126,6 +127,14 @@ export class PostDialogComponent implements OnInit {
     this.service.deleteComment({id:id}).subscribe((res:any) => {
 
       this.loadComments();
+    })
+  }
+  deletePost(){
+    this.service.deletePost(this.post.id).subscribe((res:any)=>{
+      this.service.posts=[];
+      this.service.loadPosts();
+      this.dialog.closeAll();
+      
     })
   }
   
