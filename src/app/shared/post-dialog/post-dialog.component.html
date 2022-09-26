@@ -2,7 +2,7 @@
 <mat-dialog-content style="height:100%;" class="mat-typography">
     <mat-card class="post-card">
         <mat-card-header>
-          <img src="{{this.post.user.photo.uri}}" mat-card-avatar >
+          <img *ngIf="this.post.user.photo!=undefined" src="{{this.post.user.photo.uri}}" mat-card-avatar >
           <mat-card-title>{{this.post.user.name}}</mat-card-title>
           <mat-card-subtitle>{{this.post.address.suburb}}</mat-card-subtitle>
         </mat-card-header>
@@ -46,7 +46,7 @@
 
       <mat-card style="margin-top:20px;" >
         <mat-card-header>
-            <img src="{{this.userService.user?.photo?.uri}}" mat-card-avatar >
+            <img  src="{{this.userService.user?.photo?.uri}}" mat-card-avatar >
             <mat-card-title>{{this.userService.user?.name}}</mat-card-title>
             <!-- <mat-card-subtitle>{{this.comment.date}}</mat-card-subtitle> -->
         </mat-card-header>

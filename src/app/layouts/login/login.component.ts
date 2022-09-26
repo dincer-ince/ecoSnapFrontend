@@ -52,7 +52,8 @@ export class LoginComponent implements OnInit {
     this.loading=true;
     var body = {
       email:this.signin.value.email,
-      password:this.signin.value.password
+      password:this.signin.value.password,
+      pushToken: "string"
     }
     this.service.login(body).subscribe(res=>{
       this.loading = false;
@@ -75,7 +76,7 @@ export class LoginComponent implements OnInit {
 // misafir2022
     this.signin.patchValue({
       email: "misafirhacettepe@gmail.com",
-      password:"misafir2022"
+      password:"Misafir2022"
     })
     this.onSubmit();
 

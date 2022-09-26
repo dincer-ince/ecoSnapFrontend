@@ -40,10 +40,13 @@
             <mat-form-field appearance="standard" color="accent">
                 <mat-label>Aktivite tipi</mat-label>
                 <mat-select [formControl]="aktivitetipi">
-                <mat-option value="1">Çöp Problemi</mat-option>
-                <mat-option value="2">İnternet Problemi</mat-option>
-                <mat-option value="3">Telefon Problemi</mat-option>
+                <mat-option value="1">İnternet Problemi</mat-option>
+                <mat-option value="2">Çöp Problemi</mat-option>
+                <mat-option value="3">Kaldırım Problemi</mat-option>
                 <mat-option value="4">Elektrik Problemi</mat-option>
+                <mat-option value="5">Park Problemi</mat-option>
+                <mat-option value="6">Atık Problemi</mat-option>
+                <mat-option value="7">Diğer Problemler</mat-option>
                 </mat-select>
             </mat-form-field>
             <button  mat-raised-button color="accent" (click)="submit()">Yükle</button>

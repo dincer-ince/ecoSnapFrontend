@@ -60,7 +60,7 @@ export class GeoService {
                 image: new Icon(({
                   
                   crossOrigin: 'anonymous',
-                  src: 'assets/trash.png',
+                  src: 'assets/errornet.png',
                   imgSize: [24, 24]
                 }))
               })
@@ -70,7 +70,7 @@ export class GeoService {
                 image: new Icon(({
                   
                   crossOrigin: 'anonymous',
-                  src: 'assets/errornet.png',
+                  src: 'assets/trash.png',
                   imgSize: [24, 24]
                 }))
               })
@@ -80,12 +80,42 @@ export class GeoService {
                 image: new Icon(({
                   
                   crossOrigin: 'anonymous',
-                  src: 'assets/phone.png',
+                  src: 'assets/sidewalk.png',
                   imgSize: [24, 24]
                 }))
               })
             }
             else if(feature.get('features')[0].get('element').activityType.id==4){
+              style=new Style({
+                image: new Icon(({
+                  
+                  crossOrigin: 'anonymous',
+                  src: 'assets/electricity.png',
+                  imgSize: [24, 24]
+                }))
+              })
+            }
+            else if(feature.get('features')[0].get('element').activityType.id==5){
+              style=new Style({
+                image: new Icon(({
+                  
+                  crossOrigin: 'anonymous',
+                  src: 'assets/parking.png',
+                  imgSize: [24, 24]
+                }))
+              })
+            }
+            else if(feature.get('features')[0].get('element').activityType.id==6){
+              style=new Style({
+                image: new Icon(({
+                  
+                  crossOrigin: 'anonymous',
+                  src: 'assets/waste.png',
+                  imgSize: [24, 24]
+                }))
+              })
+            }
+            else if(feature.get('features')[0].get('element').activityType.id==7){
               style=new Style({
                 image: new Icon(({
                   
